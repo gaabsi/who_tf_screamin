@@ -216,3 +216,4 @@ clean.sh
 train.sh 
 schema*
 exploration/
+models/version_0/version_0.ckpt
