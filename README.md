@@ -94,7 +94,7 @@ who_tf_screamin/
     │   └── app.py                      # Streamlit ultra basique pour me la peter dans le README
     ├── models/                         # Stockage des modeles entrainés
     │   └── version_0/                  # Premiere (et unique) version du modele
-    │       ├── version_O.ckpt          # Poids de notre premier modele
+    │       ├── version_O.ckpt          # Poids de notre premier modele (non plus mais sur Hugging Face Hub on le récupère juste après)
     │       └── lightning_logs/         # Logs de l'entrainement du modele
     │           ├── eval_modele.png     # Schémas pour monitorer l'eventuel l'over/under fit du modele
     │           ├── metrics.csv         # Logs générés par lightning
@@ -131,6 +131,13 @@ git clone
 cd who_tf_screamin
 Docker build -t who_tf_screamin:latest . 
 docker run --rm -v ~/who_tf_screamin:/app who_tf_screamin:latest  
+```
+
+Maintenant on récupere les poids du modèle qu'on a deja entrainé : 
+```bash 
+cd ~/who_tf_screamin
+huggingface-cli download gaabsi/who_tf_screamin version_0.ckpt --local-dir ./models/version_0
+rm -rf ./models/version_0/.cache/
 ```
 
 Pour le premier cas (faire tourner le projet entier soi meme) il faudra modifier le main.sh et dé-commenter les lignes de training. 
