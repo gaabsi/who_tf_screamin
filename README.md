@@ -127,17 +127,25 @@ Pour ce deuxieme cas on peut le faire rapidement comme ça :
 
 ```bash 
 cd ~
-git clone 
-cd who_tf_screamin
-Docker build -t who_tf_screamin:latest . 
-docker run --rm -v ~/who_tf_screamin:/app who_tf_screamin:latest  
+git clone https://github.com/gaabsi/who_tf_screamin.git
 ```
 
 Maintenant on récupere les poids du modèle qu'on a deja entrainé : 
+
 ```bash 
 cd ~/who_tf_screamin
 huggingface-cli download gaabsi/who_tf_screamin version_0.ckpt --local-dir ./models/version_0
 rm -rf ./models/version_0/.cache/
 ```
+
+On crée l'image Docker et on run : 
+
+```bash 
+cd who_tf_screamin
+Docker build -t who_tf_screamin:latest . 
+docker run --rm -v ~/who_tf_screamin:/app who_tf_screamin:latest  
+```
+
+
 
 Pour le premier cas (faire tourner le projet entier soi meme) il faudra modifier le main.sh et dé-commenter les lignes de training. 
