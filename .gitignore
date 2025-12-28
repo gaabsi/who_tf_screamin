@@ -205,3 +205,14 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+#P our pas push le ds store
+.DS_Store
+
+# Script inutile que j'ai dev mais qui me servira peut etre un jour 
+nicer_screams.py
+data/
+clean.sh
+train.sh 
+schema*
+exploration/

@@ -1,0 +1,12 @@
+data_augmentation/nicer_screams.py 
+exploration/
+Scraping/battle_theme
+Scraping/Screams 
+Scraping/pokedex.csv
+venv/
+clean.sh 
+.gitignore
+.git 
+main2.sh 
+README.md
+main.sh 
