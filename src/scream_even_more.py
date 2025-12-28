@@ -376,7 +376,7 @@ if __name__ == "__main__":
         "HighPass": [300, 1500],
         "LowPass": [3000, 6000],
         "snr": [15, 20],
-    } # Pour comprendre ces plages tout est détaillé dans le notebook
+    }  # Pour comprendre ces plages tout est détaillé dans le notebook
 
     chemins_bruits = [
         os.path.join(dir_des_bruits, f)

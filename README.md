@@ -113,7 +113,6 @@ who_tf_screamin/
     ├── Dockerfile                      # Dockerfile du projet
     ├── main.sh                         # Pour lancer tout le projet sans se casser la tete (entrainement gourmand, déconseillé en local, préferer une VM)
     ├── .gitignore                      # Fichiers a ignorer par Git 
-    ├── .dockerignore                   # Fichiers a ignorer par Docker
     └── requirements.txt                # Packages du projet
 ```
 
@@ -141,10 +140,10 @@ rm -rf ./models/version_0/.cache/
 On crée l'image Docker et on run : 
 
 ```bash 
-docker build -t who_tf_screamin:latest . 
+cd ~/who_tf_screamin
+docker buildx build --platform linux/amd64,linux/arm64 -t who_tf_screamin:latest . 
 docker run --rm -v ~/who_tf_screamin:/app who_tf_screamin:latest  
 ```
 
-
-
-Pour le premier cas (faire tourner le projet entier soi meme) il faudra modifier le main.sh et dé-commenter les lignes de training. 
+Pour le premier cas (faire tourner le projet entier soi meme) il faudra modifier le main.sh et dé-commenter les lignes de training.  
+Mais vraiment il faut un bon GPU pour le run en local. 

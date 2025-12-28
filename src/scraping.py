@@ -10,7 +10,7 @@ from bs4 import BeautifulSoup
 POKEMON_VERSION = os.getenv("POKEMON_VERSION")
 CSV_PATH = os.path.expanduser(os.getenv("CSV_PATH"))
 SCREAMS_PATH = os.path.expanduser(os.getenv("SCREAMS_PATH"))
-os.makedirs(SCREAMS_PATH, exist_ok = True)
+os.makedirs(SCREAMS_PATH, exist_ok=True)
 
 # Récupérer le html de la page du pokedex de la gen1 (on peut mettre une autre gen ça marche aussi en mettant "legendes-za" par exemple)
 url_page_pokemon = f"https://www.pokebip.com/pokedex/{POKEMON_VERSION}"
@@ -66,7 +66,7 @@ for pokemon in pokemons_df["Pokémon"].unique():
     os.makedirs(pokemon_dir, exist_ok=True)
 
     numero_natio = pokemons_df[pokemons_df["Pokémon"] == pokemon]["INT_numéro"].iloc[0]
-    url = f"https://pokebip.com/audio/cris-sl/{numero_natio}.mp3" # C'est ici que le cri est stocké on peut le voir en inspectant l'html
+    url = f"https://pokebip.com/audio/cris-sl/{numero_natio}.mp3"  # C'est ici que le cri est stocké on peut le voir en inspectant l'html
 
     resp = requests.get(url)
     resp.raise_for_status()

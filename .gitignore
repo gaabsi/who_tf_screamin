@@ -217,3 +217,5 @@ train.sh
 schema*
 exploration/
 models/version_0/version_0.ckpt
+au_cas_ou
+.dockerignore

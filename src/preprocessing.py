@@ -105,7 +105,7 @@ class AudioPreprocessing:
 
         if self.sr_fixe and sr != self.sr_fixe:
             resampler = torchaudio.transforms.Resample(
-                orig_freq = sr, new_freq = self.sr_fixe
+                orig_freq=sr, new_freq=self.sr_fixe
             )
             wf = resampler(wf)
             sr = self.sr_fixe
@@ -114,14 +114,14 @@ class AudioPreprocessing:
             duree_cible = self.get_duree_max()
 
         if wf.shape[0] > 1:
-            wf = torch.mean(wf, dim = 0, keepdim = True)
+            wf = torch.mean(wf, dim=0, keepdim=True)
 
         if duree != duree_cible:
             padding_total = int(duree_cible * sr - wf.shape[1])
             padding_left = padding_total // 2
             padding_right = padding_total - padding_left
             padded_wf = torch.nn.functional.pad(
-                wf, (padding_left, padding_right), mode = "constant", value = 0
+                wf, (padding_left, padding_right), mode="constant", value=0
             )
 
         else:
@@ -243,7 +243,7 @@ if __name__ == "__main__":
     train_size = 0.7
     val_size = 0.2
     sr_fixe = (
-        16000  # Dans la doc de AST ils disent que le modele attend des sr de 16000
+        16000  # Dans la doc de cet AST ils disent que le modele attend des sr de 16000
     )
 
     ap = AudioPreprocessing(

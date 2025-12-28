@@ -28,8 +28,8 @@ $PYTHON "$PYTHON_DIR/scream_even_more.py"
 # Une fois qu'on a toutes nos données on les pre process : 
 $PYTHON "$PYTHON_DIR/preprocessing.py"
 
-# On entraine la derniere couche de notre modele AST sur nos audios
-$PYTHON "$PYTHON_DIR/modele.py"
+# # On entraine la derniere couche de notre modele AST sur nos audios
+# $PYTHON "$PYTHON_DIR/modele.py"
 
-# On evalue les performances de notre modele
+# # On evalue les performances de notre modele
 $PYTHON "$PYTHON_DIR/evaluation.py"

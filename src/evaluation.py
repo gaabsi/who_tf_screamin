@@ -4,12 +4,14 @@ import warnings
 warnings.filterwarnings("ignore", category=UserWarning)
 
 import matplotlib.pyplot as plt
-import pandas as pd
 import numpy as np
+import pandas as pd
 import torch
-from modele import ModeleEntrainement
 from transformers import ASTFeatureExtractor
+
+from modele import ModeleEntrainement
 from preprocessing import AudioPreprocessing
+
 
 class ModelEvalMetriques:
     """
@@ -105,11 +107,11 @@ class PredictEval:
         self.modele = None
         self.index_nom = None
         self.audio_preprocess = AudioPreprocessing(
-            dir_input=None, 
-            dir_output=None, 
-            train_size=None, 
-            val_size=None, 
-            sr_fixe=16000
+            dir_input=None,
+            dir_output=None,
+            train_size=None,
+            val_size=None,
+            sr_fixe=16000,
         )
 
     def custom_modele(self):
@@ -117,7 +119,7 @@ class PredictEval:
         Recupere la classe d'entrainement du modele et utilise la classe parente de lightning qui nous permet de load sur un checkpoint.
         Ca nous permet de mettre les poids de notre modele qu'on a custom en amont de cette etape.
         """
-        if not self.modele : 
+        if not self.modele:
             self.modele = ModeleEntrainement.load_from_checkpoint(self.checkpoint_path)
             self.modele.eval()
 
@@ -128,7 +130,7 @@ class PredictEval:
         On refait rapidement le mapping index : nom dans un dictionnaire
         On reutilise un bout de code qu'on avait dev dans le modele.py
         """
-        if not self.index_nom : 
+        if not self.index_nom:
             pokedex = pd.read_csv(
                 self.csv_path,
                 usecols=["INT_numéro", "Pokémon"],
@@ -148,10 +150,14 @@ class PredictEval:
         modele = self.custom_modele()
         index_nom = self.map_index_nom()
 
-        wf, sr = self.audio_preprocess.pad_mono_audio(chemin_audio=audio_path, duree_cible=self.duree_audio_train)
+        wf, sr = self.audio_preprocess.pad_mono_audio(
+            chemin_audio=audio_path, duree_cible=self.duree_audio_train
+        )
         wf = wf.squeeze(0)
 
-        inpoute = self.feature_extractor(wf.numpy(), sampling_rate=sr, return_tensors="pt")
+        inpoute = self.feature_extractor(
+            wf.numpy(), sampling_rate=sr, return_tensors="pt"
+        )
 
         impoute_model = inpoute["input_values"]
 
@@ -175,23 +181,21 @@ if __name__ == "__main__":
     BASE_DIR = os.getenv("BASE_DIR")
     lighning_dir = os.path.join(BASE_DIR, "models/version_0/lightning_logs")
     chemin_logs = os.path.join(lighning_dir, "metrics.csv")
-    test_dir = os.path.join(BASE_DIR, "data/split_data")
-    checkpoint_path = os.path.join(
-        BASE_DIR, "models/version_0/version_0.ckpt"
-    )
+    test_dir = os.path.join(BASE_DIR, "data/split_data/test")
+    checkpoint_path = os.path.join(BASE_DIR, "models/version_0/version_0.ckpt")
     feature_extractor = "MIT/ast-finetuned-audioset-10-10-0.4593"
     CSV_PATH = os.getenv("CSV_PATH")
     test_perf_csv_path = os.path.join(lighning_dir, "test_perf.csv")
 
     eval = ModelEvalMetriques(
-        chemin_logs = chemin_logs, chemin_output = lighning_dir, nom_figs = "eval_modele.png"
+        chemin_logs=chemin_logs, chemin_output=lighning_dir, nom_figs="eval_modele.png"
     )
     eval.plot_logs()
 
     test_set_eval = PredictEval(
-        checkpoint_path = checkpoint_path,
-        feature_extractor = feature_extractor,
-        csv_path = CSV_PATH
+        checkpoint_path=checkpoint_path,
+        feature_extractor=feature_extractor,
+        csv_path=CSV_PATH,
     )
     cris = [
         os.path.join(test_dir, pokemon, cri)

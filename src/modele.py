@@ -209,31 +209,30 @@ if __name__ == "__main__":
         ]
     )
     models_dir = os.path.join(BASE_DIR, "models", f"version_{version}")
-    os.makedirs(models_dir, exist_ok = True)
-    
+    os.makedirs(models_dir, exist_ok=True)
 
-    datamodule = DataModule(data_dir = DATA_DIR, csv_path = CSV_PATH, batch_size = batch_size)
-    model = ModeleEntrainement(nb_classes = nb_classes)
+    datamodule = DataModule(data_dir=DATA_DIR, csv_path=CSV_PATH, batch_size=batch_size)
+    model = ModeleEntrainement(nb_classes=nb_classes)
 
     callbacks = [
-        EarlyStopping(monitor = "val_loss", patience = patience, mode = "min", verbose = True),
+        EarlyStopping(monitor="val_loss", patience=patience, mode="min", verbose=True),
         ModelCheckpoint(
-            dirpath = models_dir,
-            filename = f"version_{version}",
-            monitor = "val_acc",
-            mode = "max",
-            save_top_k = 1,
-            verbose = True,
+            dirpath=models_dir,
+            filename=f"version_{version}",
+            monitor="val_acc",
+            mode="max",
+            save_top_k=1,
+            verbose=True,
         ),
     ]
 
     trainer = pl.Trainer(
-        default_root_dir = models_dir,
-        max_epochs = epochs,
-        accelerator = "auto",
-        devices = 1,
-        callbacks = callbacks,
-        log_every_n_steps = 10,
+        default_root_dir=models_dir,
+        max_epochs=epochs,
+        accelerator="auto",
+        devices=1,
+        callbacks=callbacks,
+        log_every_n_steps=10,
     )
 
-    trainer.fit(model = model, datamodule = datamodule)
+    trainer.fit(model=model, datamodule=datamodule)
