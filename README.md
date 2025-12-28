@@ -141,7 +141,6 @@ rm -rf ./models/version_0/.cache/
 On crée l'image Docker et on run : 
 
 ```bash 
-cd who_tf_screamin
 Docker build -t who_tf_screamin:latest . 
 docker run --rm -v ~/who_tf_screamin:/app who_tf_screamin:latest  
 ```
