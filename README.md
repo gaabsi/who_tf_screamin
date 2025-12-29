@@ -1,5 +1,11 @@
 # who_tf_screamin
 
+![Python](https://img.shields.io/badge/python-3.9-blue?logo=python&logoColor=white)
+![PyTorch](https://img.shields.io/badge/PyTorch-2.8-EE4C2C?logo=pytorch&logoColor=white)
+![Lightning](https://img.shields.io/badge/Lightning-2.6-792EE5?logo=lightning&logoColor=white)
+![HuggingFace](https://img.shields.io/badge/🤗%20HuggingFace-yellow)
+![Docker](https://img.shields.io/badge/Docker-ready-2496ED?logo=docker&logoColor=white)
+
 ## Description 
 Le but du projet est de faire un classifieur qui permet de reconnaitre un pokémon par son cri.  
 Le modèle utilisé pour la classification est un *AST (Audio Spectrogram Transformer)*.  
