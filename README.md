@@ -8,7 +8,8 @@
 
 ## Description 
 Le but du projet est de faire un classifieur qui permet de reconnaitre un pokémon par son cri.  
-Le modèle utilisé pour la classification est un *AST (Audio Spectrogram Transformer)*.  
+Le modèle utilisé pour la classification est un *AST (Audio Spectrogram Transformer)*, ce type de modèle est équivalent a un VIT (Vision Transformer) sur des audios.  
+L'audio est transformée en image (spectrogramme) et un Vision Transformers est appliqué après.  
 Pour éviter d'avoir a réentrainer un modele from scratch j'ai récupéré un modele deja pré entrainé et seulement les dernieres couches servant a la classification on été dé-freeze pour l'adapter à notre tâche de classification.  
 
 ## Demonstration
