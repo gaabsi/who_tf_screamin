@@ -6,10 +6,11 @@ import numpy as np
 import torch
 import torchaudio
 
-warnings.filterwarnings("ignore", category=UserWarning)
+warnings.filterwarnings("ignore", category = UserWarning)
 
 
 class AudioPreprocessing:
+    
     """
     Classe tres courte pour le preprocessing de mes fichiers audio.
     Comme les audios de base ont l'air plutot propres (scrapés via mes petites mimines) peu de preprocessing a faire.

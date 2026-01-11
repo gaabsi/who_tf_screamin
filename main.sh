@@ -32,4 +32,4 @@ $PYTHON "$PYTHON_DIR/preprocessing.py"
 # $PYTHON "$PYTHON_DIR/modele.py"
 
 # # On evalue les performances de notre modele
-$PYTHON "$PYTHON_DIR/evaluation.py"
+# $PYTHON "$PYTHON_DIR/evaluation.py"

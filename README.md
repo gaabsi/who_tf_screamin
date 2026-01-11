@@ -1,8 +1,8 @@
 # who_tf_screamin
 
-![Python](https://img.shields.io/badge/python-3.9-blue?logo=python&logoColor=white)
-![PyTorch](https://img.shields.io/badge/PyTorch-2.8-EE4C2C?logo=pytorch&logoColor=white)
-![Lightning](https://img.shields.io/badge/Lightning-2.6-792EE5?logo=lightning&logoColor=white)
+![Python](https://img.shields.io/badge/python-3.9+-blue?logo=python&logoColor=white)
+![PyTorch](https://img.shields.io/badge/PyTorch-2.8+-EE4C2C?logo=pytorch&logoColor=white)
+![Lightning](https://img.shields.io/badge/Lightning-2.6+-792EE5?logo=lightning&logoColor=white)
 ![HuggingFace](https://img.shields.io/badge/🤗%20HuggingFace-yellow)
 ![Docker](https://img.shields.io/badge/Docker-ready-2496ED?logo=docker&logoColor=white)
 
